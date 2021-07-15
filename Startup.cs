@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using webapi_efcore.Controllers.Services.CharacterService;
 
 namespace webapi_efcore
 {
@@ -32,6 +33,8 @@ namespace webapi_efcore
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "webapi_efcore", Version = "v1" });
             });
+            services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<ICharacterService, CharacterService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
